@@ -1,0 +1,29 @@
+body{
+    background-color: black;
+    margin: 0%;
+    padding: 0%;
+}
+.header-nav{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    background-image: url("img/logo-fravesta.jpg");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 14rem;
+    display: flex;
+}
+.header-nav {
+    justify-content: end;
+    color: rgb(90, 24, 90);
+}
+.header-nav li{
+    list-style: none;  
+}
+.hero{
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("img/hero.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
