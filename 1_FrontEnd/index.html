@@ -5,20 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frávesta</title>
     <link rel="shortcut icon" href="img/fravega-icon.jpg" type="jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script defer src="front.js"></script>
 </head>
 <body>
     <header class="header-nav">
-        <ul class="productos">
-            <li>Home</li>
-            <li>Celulares</li>
-            <li>Notebooks</li>
-            <li>Carrito</li>
-        </ul>
+        <div class="options">
+            <a href="#">Home</a>
+            <div class="dropdown">
+                <button class="dropBtn">Productos
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropOptions">
+                    <a href="#Celulares">Celulares</a>
+                    <a href="#Notebooks">Notebooks</a>
+                </div>    
+            </div>
+            <a href="">Carrito</a>
+        </div>
     </header>
     <main class="main-container">
         <section class="hero">
+            <div class="slideshow-container">
+            <!-- primera dispositiva -->
+                <div class="mySlides fade">
+                    <img src="img/hero.jpg" style="width:100%">
+                </div>
+
+            <!-- segunda dispositiva -->    
+                <div class="mySlides fade">
+                    <img src="img/notes.webp" style="width:100%">
+                </div>
+
+            <!-- tercera dispositiva -->        
+                <div class="mySlides fade">
+                    <img src="img/laptos.png" style="width:100%">
+                </div>
+
+            <!-- cuarta dispositiva -->        
+                <div class="mySlides fade">
+                    <img src="img/iphones.jpg" style="width:100%">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
         </section>
+        <footer>
+            <div class="footer">
+                <ol>
+                    <li>Nosotros</li>
+                    <li>Contactanos</li>
+                    <li>Sobre nosotros</li>
+                </ol>
+            </div>
+        </footer>
     </main>    
 </body>
 </html>
