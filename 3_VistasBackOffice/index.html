@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal</title>
+    <link rel="shortcut icon" href="/proyectoGrupal/TPIntegradorPrograIII/1_FrontEnd/img/fravega-icon.jpg" type="jpg">
+    <link rel="stylesheet" href="/proyectoGrupal/TPIntegradorPrograIII/3_VistasBackOffice/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img class="logo" src="/proyectoGrupal/TPIntegradorPrograIII/1_FrontEnd/img/logo-fravesta.jpg">
+        </div>
+        
+        <nav>
+            <ul>
+                <li class="ul-header">
+                    <a href="index.html">Principal</a> 
+                </li>
+                <li class="ul-header">
+                    <a href="get.html">Obtener</a>
+                </li>
+                <li class="ul-header">
+                    <a href="post.html">Crear</a>
+                </li>
+                <li class="ul-header">
+                    <a href="put.html">Modificar</a>
+                </li>
+                <li class="ul-header">
+                    <a href="delete.html">Eliminar</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contenedor-productos"></section>
+    </main>
+
+    <script>
+        const urlBase = "http://localhost:3000";
+        const contenedorProductos = document.getElementById("contenedor-productos");
+
+        async function obtenerProductos() {
+            try{
+                const response = await fetch(`${urlBase}/api/products`);
+                console.log(response);
+
+                const data = await response.json();
+                const products = data.payload;
+
+                renderizarProductos(products);
+            }catch(error){
+                console.error("Error al obtener los productos", error);
+            }
+        }
+        function renderizarProductos(array){
+            let htmlProductos = "";
+
+            array.forEach(products  => {
+                htmlProductos += `
+                    <div class="card-producto">
+                        <img class="card-img" src="${products.image}" alt="${products.name}">
+                        <h4>${products.id}</h4>
+                        <h4>${products.category}</h4>
+                    </div>    
+                `;    
+            });
+            contenedorProductos.innerHTML =htmlProductos;
+        }
+        obtenerProductos();
+    </script>
+</body>
+</html>

@@ -2,8 +2,19 @@ body{
     background-color: rgb(251, 239, 239);
     margin: 0%;
     padding: 0%;
+    color: rgb(90, 24, 90);
 }
+.modoOscuro{
+    cursor: pointer;
+    padding: 0%;
+}
+.dark-mode {
+    background-color: black;
 
+}
+.dark-mode .header-nav{
+    background-color: black;
+}
 .header-nav{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: white;
@@ -15,7 +26,6 @@ body{
 }
 .header-nav {
     justify-content: end;
-    color: rgb(90, 24, 90);
 }
 .header-nav a{
     float: left;
@@ -69,9 +79,6 @@ body{
     position: relative;
     margin:auto;
 }
- /*.mySlides{ funcion que usaremos al conectar con js
-    display: none;
-}*/
 .mySlides img{
     width: 100vw;
     height: 100vh;
@@ -107,5 +114,6 @@ body{
 }
 footer{
     width: 100vw;
-    background-color: black;
+    color: black;
+    color: rgb(90, 24, 90);
 }
