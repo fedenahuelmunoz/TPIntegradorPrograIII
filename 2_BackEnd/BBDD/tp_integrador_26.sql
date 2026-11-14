@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2026 a las 05:11:21
+-- Tiempo de generación: 14-11-2026 a las 18:29:39
 -- Versión del servidor: 10.11.16-MariaDB
 -- Versión de PHP: 8.5.12
 
@@ -41,36 +41,36 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `image`, `category`, `price`, `active`) VALUES
-(1, 'MacBook Pro 14 M3', 'https://www.gettyimages.com/detail/photo/apple-macbook-pro-royalty-free-image/1358386001.png', 'notebook', 1999.99, 1),
-(2, 'Dell XPS 13 Plus', 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45.png', 'notebook', 1499.50, 1),
-(3, 'Lenovo ThinkPad X1 Carbon Gen 11', 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed.png', 'notebook', 1650.00, 1),
-(4, 'HP Spectre x360 14', 'https://images.unsplash.com/photo-1544717305-2782549b5136.png', 'notebook', 1399.00, 1),
-(5, 'Asus ROG Zephyrus G14', 'https://images.unsplash.com/photo-1603302576837-37561b2e2302.png', 'notebook', 1799.99, 1),
-(6, 'Acer Swift 3 OLED', 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8.png', 'notebook', 799.00, 1),
-(7, 'Microsoft Surface Laptop 5', 'https://images.unsplash.com/photo-1522199755839-a2bacb67c546.png', 'notebook', 1199.00, 1),
-(8, 'MSI Creator Z16', 'https://images.unsplash.com/photo-1531297484001-80022131f5a1.png', 'notebook', 1899.00, 1),
-(9, 'Razer Blade 15', 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2.png', 'notebook', 2299.99, 1),
-(10, 'Samsung Galaxy Book3 Pro', 'https://images.unsplash.com/photo-1515255557674-722a4f6d0f66.png', 'notebook', 1449.00, 1),
-(11, 'Huawei MateBook D 15', 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef.png', 'notebook', 699.00, 1),
-(12, 'Gigabyte Aero 16', 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf.png', 'notebook', 1749.00, 1),
-(13, 'Lenovo Legion 5 Pro', 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9.png', 'notebook', 1299.00, 1),
-(14, 'HP Pavilion 15', 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853.png', 'notebook', 649.99, 1),
-(15, 'Asus ZenBook 14 OLED', 'https://images.unsplash.com/photo-1504707748692-419802cf939d.png', 'notebook', 999.00, 1),
-(16, 'iPhone 15 Pro Max', 'https://images.unsplash.com/photo-1695048133142-1a20484d2569.png', 'cellphone', 1199.00, 1),
-(17, 'Samsung Galaxy S24 Ultra', 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf.png', 'cellphone', 1299.99, 1),
-(18, 'Google Pixel 8 Pro', 'https://images.unsplash.com/photo-1598327105666-5b89351aff97.png', 'cellphone', 999.00, 1),
-(19, 'Xiaomi 14 Ultra', 'http://i05.appmifile.com/396_item_uk/26/02/2024/29b007446a4755b6fd44709dc80e656c.png', 'cellphone', 1099.00, 1),
-(20, 'OnePlus 12', 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0.png', 'cellphone', 799.00, 1),
-(21, 'Motorola Edge 40 Pro', 'https://images.unsplash.com/photo-1533228876829-65c94e7b5025.png', 'cellphone', 899.00, 1),
-(22, 'Nothing Phone (2)', 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9.png', 'cellphone', 699.00, 1),
-(23, 'Sony Xperia 1 V', 'https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2.png', 'cellphone', 1399.00, 1),
-(24, 'Asus ROG Phone 8', 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7.png', 'cellphone', 1199.00, 1),
-(25, 'iPhone 13', 'https://images.unsplash.com/photo-1605236453806-6ff36851218e.png', 'cellphone', 599.00, 1),
-(26, 'Samsung Galaxy A54', 'https://images.unsplash.com/photo-1580910051074-3eb694886505.png', 'cellphone', 349.99, 1),
-(27, 'Xiaomi Redmi Note 13 Pro', 'https://images.unsplash.com/photo-1523206489230-c012c64b2b48.png', 'cellphone', 399.00, 1),
-(28, 'Motorola Moto G84', 'https://images.unsplash.com/photo-1567581935884-3349723552ca.png', 'cellphone', 299.00, 1),
-(29, 'Realme GT 5 Pro', 'https://images.unsplash.com/photo-1573148197772-a633a6b32813.png', 'cellphone', 749.00, 1),
-(30, 'Vivo X100 Pro', 'https://images.unsplash.com/photo-1556656793-08538906a9f8.png', 'cellphone', 949.00, 1);
+(1, 'MacBook Pro 14 M3', 'https://http2.mlstatic.com/D_NQ_NP_2X_738079-MLA83154293958_032025-F.webp', 'notebook', 1999.99, 1),
+(2, 'Dell XPS 13 Plus', 'https://http2.mlstatic.com/D_NQ_NP_2X_764463-MLA116381712810_092026-F.webp', 'notebook', 1499.50, 1),
+(3, 'Lenovo ThinkPad X1 Carbon Gen 11', 'https://http2.mlstatic.com/D_NQ_NP_2X_860075-CBT113724298588_072026-F.webp', 'notebook', 1650.00, 1),
+(4, 'HP Spectre x360 14', 'https://http2.mlstatic.com/D_NQ_NP_2X_669463-MLA91140860557_082025-F.webp', 'notebook', 1399.00, 1),
+(5, 'Asus ROG Zephyrus G14', 'https://http2.mlstatic.com/D_NQ_NP_2X_944845-MLA115638274050_092026-F.webp', 'notebook', 1799.99, 1),
+(6, 'Acer Swift 3 OLED', 'https://http2.mlstatic.com/D_NQ_NP_2X_742095-MLA92532265842_092025-F.webp', 'notebook', 799.00, 1),
+(7, 'Microsoft Surface Laptop 5', 'https://http2.mlstatic.com/D_NQ_NP_2X_741196-CBT110304501052_052026-F.webp', 'notebook', 1199.00, 1),
+(8, 'MSI Creator Z16', 'https://http2.mlstatic.com/D_NQ_NP_2X_760274-MLA117898647220_102026-F.webp', 'notebook', 1899.00, 1),
+(9, 'Razer Blade 15', 'https://http2.mlstatic.com/D_NQ_NP_2X_688269-MLA90071032242_082025-F.webp', 'notebook', 2299.99, 1),
+(10, 'Samsung Galaxy Book3 Pro', 'https://http2.mlstatic.com/D_NQ_NP_2X_826892-MLA99556859396_122025-F.webp', 'notebook', 1449.00, 1),
+(11, 'Huawei MateBook D 15', 'https://http2.mlstatic.com/D_NQ_NP_2X_723510-MLA89101369798_082025-F.webp', 'notebook', 699.00, 1),
+(12, 'Gigabyte Aero 16', 'https://http2.mlstatic.com/D_NQ_NP_2X_818842-MLA118518244067_092026-F.webp', 'notebook', 1749.00, 1),
+(13, 'Lenovo Legion 5 Pro', 'https://http2.mlstatic.com/D_NQ_NP_2X_860897-MLA93693376463_092025-F.webp', 'notebook', 1299.00, 1),
+(14, 'HP Pavilion 15', 'https://http2.mlstatic.com/D_NQ_NP_2X_797396-MLA99554474430_122025-F.webp', 'notebook', 649.99, 1),
+(15, 'Asus ZenBook 14 OLED', 'https://http2.mlstatic.com/D_NQ_NP_2X_601922-MLA115594932362_092026-F.webp', 'notebook', 999.00, 1),
+(16, 'iPhone 15 Pro Max', 'https://http2.mlstatic.com/D_NQ_NP_2X_933234-MLA95498909620_102025-F.webp', 'cellphone', 1199.00, 1),
+(17, 'Samsung Galaxy S24 Ultra', 'https://http2.mlstatic.com/D_NQ_NP_2X_687567-CBT120842125085_112026-F.webp', 'cellphone', 1299.99, 1),
+(18, 'Google Pixel 8 Pro', 'https://http2.mlstatic.com/D_NQ_NP_2X_815980-MLA72598570782_112023-F.webp', 'cellphone', 999.00, 1),
+(19, 'Xiaomi 14 Ultra', 'https://http2.mlstatic.com/D_NQ_NP_2X_839531-MLA109214300924_042026-F.webp', 'cellphone', 1099.00, 1),
+(20, 'OnePlus 12', 'https://http2.mlstatic.com/D_NQ_NP_2X_996135-CBT116664279484_092026-F.webp', 'cellphone', 799.00, 1),
+(21, 'Motorola Edge 40 Pro', 'https://http2.mlstatic.com/D_NQ_NP_2X_980424-MLA99929528305_112025-F.webp', 'cellphone', 899.00, 1),
+(22, 'Nothing Phone (2)', 'https://http2.mlstatic.com/D_NQ_NP_2X_866149-MLA117537807389_092026-F.webp', 'cellphone', 699.00, 1),
+(23, 'Sony Xperia 1 V', 'https://http2.mlstatic.com/D_NQ_NP_2X_896698-CBT121524417127_112026-F.webp', 'cellphone', 1399.00, 1),
+(24, 'Asus ROG Phone 8', 'https://http2.mlstatic.com/D_NQ_NP_2X_712303-MLA116058990180_092026-F.webp', 'cellphone', 1199.00, 1),
+(25, 'iPhone 13', 'https://http2.mlstatic.com/D_NQ_NP_2X_748074-MLA99517857624_112025-F.webp', 'cellphone', 599.00, 1),
+(26, 'Samsung Galaxy A54', 'https://http2.mlstatic.com/D_NQ_NP_2X_601781-CBT119016564469_102026-F.webp', 'cellphone', 349.99, 1),
+(27, 'Xiaomi Redmi Note 13 Pro', 'https://http2.mlstatic.com/D_NQ_NP_2X_897205-MLA99948557459_112025-F.webp', 'cellphone', 399.00, 1),
+(28, 'Motorola Moto G84', 'https://http2.mlstatic.com/D_NQ_NP_2X_613780-MLA99526823934_122025-F.webp', 'cellphone', 299.00, 1),
+(29, 'Realme GT 5 Pro', 'https://http2.mlstatic.com/D_NQ_NP_2X_809125-MLA119853881939_102026-F.webp', 'cellphone', 749.00, 1),
+(30, 'Vivo X100 Pro', 'https://http2.mlstatic.com/D_NQ_NP_2X_841606-CBT116428805630_092026-F.webp', 'cellphone', 949.00, 1);
 
 -- --------------------------------------------------------
 
