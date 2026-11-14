@@ -1,19 +1,34 @@
+<!--Etiqueta raíz <html>-->
 <html lang="en">
+
+<!--En el <head> ponemos la información no visible del Back Office incluyendo la metadata, links, etc.-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Principal</title>
+
+    <!--Título principal de la página principal del Back Office-->
+    <title>Back Office - Principal</title>
+
     <link rel="shortcut icon" href="/proyectoGrupal/TPIntegradorPrograIII/1_FrontEnd/img/fravega-icon.jpg" type="jpg">
-    <link rel="stylesheet" href="/proyectoGrupal/TPIntegradorPrograIII/3_VistasBackOffice/css/styles.css">
+
+    <!--Aca apuntamos a nuestra archivo CSS para darle estilos a nuestra página web-->
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <!--Aca hay que ponder el script para importar el archivo con código JavaScript para la página-->
 </head>
+
+<!--En el <body> disponemos los elementos visuales de la página principal del Back Office (es decir, las etiquetas HTML)-->
 <body>
-    <header>
+    <!--Cabecera del Back Office-->
+    <header class="back-office-header" id="encabezado">
         <div class="logo-container">
-            <img class="logo" src="/proyectoGrupal/TPIntegradorPrograIII/1_FrontEnd/img/logo-fravesta.jpg">
+            <img class="logo" src="./img/logo-fravesta.jpg" alt="logo-empresa-fravesta">
         </div>
         
-        <nav>
+        <!--Esta es la barra de navegación del sitio web-->
+        <nav class="header-nav">
             <ul>
+                <!--Opciones de nuestra barra de navegación-->
                 <li class="ul-header">
                     <a href="index.html">Principal</a> 
                 </li>
@@ -33,9 +48,21 @@
         </nav>
     </header>
 
+    <!--Sector principal de la página principal del Back Office-->
     <main>
-        <section id="contenedor-productos"></section>
+        <!--Sector donde iran los productos de nuestro catalogo para mostrarlos-->
+        <section id="contenedor-productos">
+
+        </section>
     </main>
+
+    <!--Pie de página del sitio web-->
+    <footer>
+        <!--Este es el logo de la empresa-->
+        <div class="img-container">
+            <img src="./img/logo-fravesta.jpg" alt="Logo de Fravesta" id="logo-empresa-footer">
+        </div>
+    </footer>
 
     <script>
         const urlBase = "http://localhost:3000";

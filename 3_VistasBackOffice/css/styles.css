@@ -10,6 +10,11 @@
 .header-nav {
     justify-content: end;
 }
+
+/*Formato para los items de la lista desordernada de la cabecera de la página*/
+.header-nav ul li{
+    list-style-type: none;
+}
 .header-nav a{
     float: left;
     font-size: 16px;
