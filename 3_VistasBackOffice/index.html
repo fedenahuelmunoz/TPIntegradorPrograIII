@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./css/styles.css">
 
     <!--Aca hay que ponder el script para importar el archivo con código JavaScript para la página-->
+    <!--<script defer src="/proyectoGrupal/TPIntegradorPrograIII/3_VistasBackOffice/index.js"></script>-->
 </head>
 
 <!--En el <body> disponemos los elementos visuales de la página principal del Back Office (es decir, las etiquetas HTML)-->
@@ -55,15 +56,6 @@
 
         </section>
     </main>
-
-    <!--Pie de página del sitio web-->
-    <footer>
-        <!--Este es el logo de la empresa-->
-        <div class="img-container">
-            <img src="./img/logo-fravesta.jpg" alt="Logo de Fravesta" id="logo-empresa-footer">
-        </div>
-    </footer>
-
     <script>
         const urlBase = "http://localhost:3000";
         const contenedorProductos = document.getElementById("contenedor-productos");
@@ -88,8 +80,12 @@
                 htmlProductos += `
                     <div class="card-producto">
                         <img class="card-img" src="${products.image}" alt="${products.name}">
-                        <h4>${products.id}</h4>
-                        <h4>${products.category}</h4>
+                        <div class="card-text">
+                            <h3>Id: ${products.id}</h3>
+                            <h4>${products.name}</h4>
+                            <h3>${products.category}</h3>
+                            <h3>$${products.price}</h3>
+                        </div>
                     </div>    
                 `;    
             });
@@ -97,5 +93,13 @@
         }
         obtenerProductos();
     </script>
+    <!--Pie de página del sitio web-->
+    <footer>
+        <!--Este es el logo de la empresa-->
+        <div class="img-container">
+            <img src="./img/logo-fravesta.jpg" alt="Logo de Fravesta" id="logo-empresa-footer">
+        </div>
+    </footer>
+
 </body>
 </html>

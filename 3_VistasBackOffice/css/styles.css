@@ -1,16 +1,19 @@
+body{
+    margin: 0%;
+}
+.back-office-header{
+    background-color: rgb(90, 24, 90);
+}
 .logo-container{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: white;
     background-image: url("img/logo-fravesta.jpg");
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: 14rem;
+    background-size: 12rem;
     display: flex;
+    height: 40vh;
+    width: 80vw;
+    margin: 0;
+    
 }
-.header-nav {
-    justify-content: end;
-}
-
 /*Formato para los items de la lista desordernada de la cabecera de la página*/
 .header-nav ul li{
     list-style-type: none;
@@ -18,7 +21,7 @@
 .header-nav a{
     float: left;
     font-size: 16px;
-    color: rgb(90, 24, 90);
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -27,7 +30,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-bottom: 0 !important;
+    padding-bottom: 0;
 }
 
 ul {
@@ -35,45 +38,32 @@ ul {
     list-style-type: none;
 }
 
-.logo-header {
-    width: 64px;
-    border-radius: 50%;
-}
-
 #contenedor-productos {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 .card-producto {
-    width: 160px;
-    border: 2px solid var(--naranja-principal);
-    height: 100px;
+    width: 20rem;
+    border: 2px solid;
+    border-color: rgba(137, 43, 226, 0.691);
+    height: 250px;
     display: flex;
-    flex-direction: column;
+    flex-direction:row;
     align-items: center;
-    justify-content: space-between;
+    margin: 1rem;
     margin-bottom: 15px;
     border-radius: 5px;
 }
-
-.card-producto h4, .card-producto p {
-    margin: 0;
+.card-producto h3 {
+    font-weight: normal;/*utilizamos este metodo para dejar el texto sin remarcar en negrita por que viene por defecto en negrita(bold)*/
 }
-
 .card-producto h4 {
     font-size: 16px;
-    color: var(--amarillo-principal);
 }
-
-.card-producto p {
-    font-size: 14px;
-}
-
-.card-img, .img-listados {
-    width: 80px;
-    height: 80px;
+.card-img{
+    width: auto;
+    height: 8rem;
 }
 .listados-container {
     display: flex;
@@ -82,8 +72,3 @@ ul {
     width: 100%;
 }
 
-#createProductForm, #modifyProductForm {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-}
