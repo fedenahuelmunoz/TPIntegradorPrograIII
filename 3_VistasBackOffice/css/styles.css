@@ -12,7 +12,6 @@ body{
     height: 40vh;
     width: 80vw;
     margin: 0;
-    
 }
 /*Formato para los items de la lista desordernada de la cabecera de la página*/
 .header-nav ul li{
@@ -42,7 +41,6 @@ ul {
     display: flex;
     flex-wrap: wrap;
 }
-
 .card-producto {
     width: 20rem;
     border: 2px solid;
@@ -70,5 +68,13 @@ ul {
     align-items: center;
     justify-content: space-between;
     width: 100%;
+}
+footer{
+    
+    background-color: rgb(90, 24, 90);
+}
+footer img{
+    width: 8vw;
+    height: auto;
 }
 
