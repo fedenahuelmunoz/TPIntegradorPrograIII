@@ -1,67 +1,176 @@
-body{
-    margin: 0%;
+/*=======================================
+    Estilos generales
+=========================================*/
+* {
+    box-sizing: border-box; /* Hace que padding y bordes estén incluidos dentro del ancho total */
+    margin: 0;
+    padding: 0;
 }
+/*Estilo para el cuerpo entero de la página*/
+body{
+    margin: 0;
+    padding:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+}
+
+/*Estilos para los textos en general de la página*/
+h4{
+    margin:0;
+}
+
+/*===========================================
+    Estilos para el HEADER del Back Office
+============================================*/
+/*Formato general del header*/
 .back-office-header{
     background-color: rgb(90, 24, 90);
+    
+    display:flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    align-items: center;
+
+    width: 100%;
+    height: 12vh;
+    min-height: 5rem;
+
+    padding: 0 2rem;
+    gap: 1rem;
 }
-.logo-container{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url("img/logo-fravesta.jpg");
-    background-size: 12rem;
+
+/*Estilos para el div que contiene la imagen del header*/
+.back-office-header .logo-container{
     display: flex;
-    height: 40vh;
-    width: 80vw;
+    align-items: center;
+    height: 100%;
+    width: auto;
+}
+
+/*Estilos para la imagen del header*/
+.back-office-header .logo-container img{
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    max-width: 15rem;
+}
+
+/*Estilo para la lista desordenada contenida en el nav*/
+.header-nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
     margin: 0;
 }
-/*Formato para los items de la lista desordernada de la cabecera de la página*/
+
+/*Formato para los items de la lista desordernada del nav de la cabecera de la página*/
 .header-nav ul li{
     list-style-type: none;
+    padding-left: 0;
 }
 .header-nav a{
+    color:aliceblue;
     float: left;
-    font-size: 16px;
-    color: black;
+    font-size: 1.2rem;
     text-align: center;
-    padding: 14px 16px;
+    padding: 0.5rem 1rem;
     text-decoration: none;
 }
-header {
+
+/*===========================================
+    Estilos para el MAIN de la página web
+============================================*/
+/*Estilos generales para el main*/
+main{
+    background-color: rgb(168, 150, 171);
+    padding: 3rem 1rem;
+
+    width: 100%;
+    min-height: 100vh;
+}
+
+/*Estilos para el formulario donde se obtiene un producto por su id y para el formulario de crear un producto*/
+.formulario-productos, .createProduct-container{
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    padding-bottom: 0;
+
 }
 
-ul {
-    padding-left: 0;
-    list-style-type: none;
+/*Estilos para el div que tiene la cabecera del formulario y para el formulario en sí de obtener producto por id*/
+.formulario-productos #cabecera-formulario, .formulario-productos #getProductForm {
+    display:flex;
+    justify-content: center;
+    padding: 1rem;
 }
 
+/*Estilos para el div que tiene la cabecera del formulario y para el formulario en sí de crear producto*/
+.createProduct-container #cabecera-formulario, .createProduct-container #createProductForm{
+    display:flex;
+    justify-content: center;
+    padding: 1rem;
+}
+ /*Estilos para los formularios de conseguir producto por id y de crear nuevo producto*/
+.formulario-productos #getProductForm, .createProduct-container #createProductForm{
+    gap: 1rem;
+}
+
+.createProduct-container #createProductForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Estilos para la section donde iran los productos del catalogo*/
 #contenedor-productos {
+    width: 100%;
+    max-width: 75rem; /*Esto limita el ancho en el caso de las pantallas muy grandes*/
+    margin: 0 auto;
+
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem; /*Permite dar un espaciado entre tarjetas*/
 }
+
+/*Estilos para cada tarjeta individual en la que ira cada producto*/
 .card-producto {
-    width: 20rem;
-    border: 2px solid;
+    max-width: 20rem;
+    width: 100%;
+
+    border: 0.1rem solid;
     border-color: rgba(137, 43, 226, 0.691);
-    height: 250px;
+    height: 15rem;
+
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     align-items: center;
-    margin: 1rem;
-    margin-bottom: 15px;
-    border-radius: 5px;
+
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 10px;
 }
 .card-producto h3 {
     font-weight: normal;/*utilizamos este metodo para dejar el texto sin remarcar en negrita por que viene por defecto en negrita(bold)*/
+    font-size: 1rem;
 }
 .card-producto h4 {
-    font-size: 16px;
+    font-size: 1.1rem;
+    margin: 0;
 }
 .card-img{
     width: auto;
+    max-width: 50%;
     height: 8rem;
+}
+
+.card-text{
+    display: flex;
+    flex-direction: column;
+    padding-left: 0.8rem;
 }
 .listados-container {
     display: flex;
@@ -69,12 +178,48 @@ ul {
     justify-content: space-between;
     width: 100%;
 }
+
+/*===========================================
+    Estilos para el FOOTER de la página web
+============================================*/
+/*Estilos generales para el footer o pie de página*/
 footer{
-    
+    width: 100%; 
     background-color: rgb(90, 24, 90);
+    color:aliceblue;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
+
+/*Formato para la imagen del footer*/
 footer img{
     width: 8vw;
     height: auto;
 }
 
+/* ===========================================
+   MEDIAS QUERY
+   =========================================== */
+@media (max-width: 768px) { /*Pantalla de menos de 768px*/
+    .back-office-header {
+        height: auto;
+        flex-direction: column; /*Pone el logo arriba y el nav abajo*/
+        justify-content: center;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .back-office-header .logo-container {
+        height: 4rem;
+        justify-content: center;
+    }
+    .header-nav ul {
+        justify-content: center;
+    }
+
+    footer p{
+        font-size: 0.9rem;
+    }
+}

@@ -1,12 +1,25 @@
+<!--Etiqueta raíz <html>-->
 <html lang="en">
+
+<!--En el <head> ponemos la información no visible del Back Office incluyendo la metadata, links, etc.-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obtener</title>
-    <link rel="shortcut icon" href="/proyectoGrupal/TPIntegradorPrograIII/1_FrontEnd/img/fravega-icon.jpg" type="jpg">
-<link rel="stylesheet" href="./css/styles.css">
-    
+
+    <!--Título principal de la página principal del Back Office-->
+    <title>Back Office - Obtener</title>
+
+    <!--Aca apuntamos al favicon de la empresa-->
+    <link rel="shortcut icon" href="img/fravega-icon.jpg" type="jpg">
+
+    <!--Aca apuntamos a nuestra archivo CSS para darle estilos a nuestra página web-->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!--Aca hay que ponder el script para importar el archivo con código JavaScript para la página-->
+    <!--<script defer src="/proyectoGrupal/TPIntegradorPrograIII/3_VistasBackOffice/index.js"></script>-->
 </head>
+
+<!--En el <body> disponemos los elementos visuales de la página principal del Back Office (es decir, las etiquetas HTML)-->
 <body>
     <!--Cabecera del Back Office-->
     <header class="back-office-header" id="encabezado">
@@ -36,18 +49,40 @@
             </ul>
         </nav>
     </header>
+
+    <!--Sector principal de nuestro sitio del Back Office-->
     <main>
-        <h4>Obtener producto por id:</h4>
-        <!-- Formulario obtener producto por id -->
+
+        <!--Formulario para pedir obtener un producto en base a un id-->
+        <section class="formulario-productos">
+
+            <!--Especie de cabecera del formulario-->
+            <div id="cabecera-formulario">
+                <h4>Obtener producto por id:</h4>
+            </div>
+            
+            <!--Formulario propiamente dicho obtener producto por id-->
             <form id="getProductForm">
-                <label for="idProd">Id producto</label>
+                <label for="idProd" id="label-id-product">Id producto</label>
                 <input type="number" name="id" id="idProd" min="1" required>
 
                 <input type="submit" value="Consultar">
             </form>
-
-            <section id="contenedor-productos"></section>
+        </section>
+        
+        <!--Contenedor para los productos, en este caso, el producto cuyo id coincide con el ingresado-->
+        <section id="contenedor-productos"></section>
     </main>
+
+     <!--Pie de página del sitio web-->
+    <footer>
+        <!--Este es el logo de la empresa-->
+        <div class="img-container">
+            <img src="./img/logo-fravesta.jpg" alt="Logo de Fravesta" id="logo-empresa-footer">
+        </div>
+
+        <p>Una empresa de Federico Muñoz y Miguel Godoy</p>
+    </footer>
 
     <script>
         const urlBase = "http://localhost:3000";
@@ -94,15 +129,7 @@
             `;
             contenedorProductos.innerHTML = htmlProducto;
         }
-    </script>
-    <footer>
-        <!--Este es el logo de la empresa-->
-        <div class="img-container">
-            <img src="./img/logo-fravesta.jpg" alt="Logo de Fravesta" id="logo-empresa-footer">
-        </div>
-    </footer>
-
-            
+    </script>   
     
 </body>
 </html>

@@ -1,0 +1,135 @@
+<!--Etiqueta raíz <html>-->
+<html lang="en">
+
+<!--En el <head> ponemos la información no visible del Back Office incluyendo la metadata, links, etc.-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Título principal de la página principal del Back Office-->
+    <title>Back Office - Modificar</title>
+
+    <!--Aca apuntamos al favicon de la empresa-->
+    <link rel="shortcut icon" href="img/fravega-icon.jpg" type="jpg">
+
+    <!--Aca apuntamos a nuestra archivo CSS para darle estilos a nuestra página web-->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!--Aca hay que ponder el script para importar el archivo con código JavaScript para la página-->
+    <!--<script defer src="/proyectoGrupal/TPIntegradorPrograIII/3_VistasBackOffice/index.js"></script>-->
+</head>
+
+<!--En el <body> disponemos los elementos visuales de la página principal del Back Office (es decir, las etiquetas HTML)-->
+<body>
+    <!--Cabecera del Back Office-->
+    <header class="back-office-header" id="encabezado">
+        <div class="logo-container">
+            <img class="logo" src="./img/logo-fravesta.jpg" alt="logo-empresa-fravesta">
+        </div>
+        
+        <!--Esta es la barra de navegación del sitio web-->
+        <nav class="header-nav">
+            <ul>
+                <!--Opciones de nuestra barra de navegación-->
+                <li class="ul-header">
+                    <a href="index.html">Principal</a> 
+                </li>
+                <li class="ul-header">
+                    <a href="get.html">Obtener</a>
+                </li>
+                <li class="ul-header">
+                    <a href="post.html">Crear</a>
+                </li>
+                <li class="ul-header">
+                    <a href="put.html">Modificar</a>
+                </li>
+                <li class="ul-header">
+                    <a href="delete.html">Eliminar</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Sector principal de nuestro sitio del Back Office-->
+    <main>
+
+        <!--Formulario para pedir obtener un producto en base a un id-->
+        <section class="formulario-productos">
+
+            <!--Especie de cabecera del formulario-->
+            <div id="cabecera-formulario">
+                <h4>Obtener producto por id:</h4>
+            </div>
+            
+            <!--Formulario propiamente dicho obtener producto por id-->
+            <form id="getProductForm">
+                <label for="idProd" id="label-id-product">Id producto</label>
+                <input type="number" name="id" id="idProd" min="1" required>
+
+                <input type="submit" value="Consultar">
+            </form>
+        </section>
+        
+        <!--Contenedor para los productos, en este caso, el producto cuyo id coincide con el ingresado-->
+        <section id="contenedor-productos"></section>
+    </main>
+
+     <!--Pie de página del sitio web-->
+    <footer>
+        <!--Este es el logo de la empresa-->
+        <div class="img-container">
+            <img src="./img/logo-fravesta.jpg" alt="Logo de Fravesta" id="logo-empresa-footer">
+        </div>
+
+        <p>Una empresa de Federico Muñoz y Miguel Godoy</p>
+    </footer>
+
+    <script>
+        const urlBase = "http://localhost:3000";
+        const contenedorProductos = document.getElementById("contenedor-productos");
+        const getProductForm = document.getElementById("getProductForm");
+
+        // Al hacer click en Consultar, hacemos un callback asincrono para pegarle a http://localhost:3000/api/products/x
+        getProductForm.addEventListener("submit", async (event) => {
+            event.preventDefault(); // Evitamos el envio por defecto del formulario
+
+            // console.log(event.target);
+
+            // Extraemos el valor del campo con id idProd
+            const idProd = event.target.idProd.value.trim();
+            console.log(idProd); // Vemos por consola el valor de id extraido del <form> para parsarselo a la url en el fetch
+
+            try {
+                const response = await fetch(`${urlBase}/api/products/${idProd}`);
+                console.log(response);
+
+                // Accemos al JSON dentro del cuerpo de la respuesta y lo convertimos a objeto JS
+                const data = await response.json(); 
+
+                const producto = data.payload[0]; // Traigo el primer objeto de mi array (de 1 solo objeto)
+
+                renderizarProducto(producto);
+
+            } catch (error) {
+                // Estos errores son errores REALES de red, no capturan 404, 500, etc
+                console.error("Error al obtener productos: ", error);
+            }
+        });
+
+        function renderizarProducto(producto) {
+            let htmlProducto = `
+                <div class="card-producto">
+                    <img src="${producto.image}" alt="${producto.name}" class="card-img">
+                    <div class="card-text">
+                        <h4>Id: ${producto.id} </h4>
+                        <h4>Nombre: ${producto.name}</h4>
+                        <h4>Precio: $${producto.price}</h4> 
+                    </div>    
+                </div>
+            `;
+            contenedorProductos.innerHTML = htmlProducto;
+        }
+    </script>   
+    
+</body>
+</html>
