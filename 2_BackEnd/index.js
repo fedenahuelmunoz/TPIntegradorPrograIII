@@ -132,8 +132,6 @@ app.put("/api/products", async (req, res) => {
 
 
 
-
-
 // Ponemos en funcionamiento nuestro servidor express
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`); // Mensaje de comprobación para la consola

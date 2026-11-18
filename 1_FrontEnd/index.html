@@ -1,34 +1,77 @@
 <!DOCTYPE html>
+
+<!--Etiqueta raíz <html>-->
 <html lang="en">
+
+<!--En el <head> ponemos la información no visible incluyendo la metadata, links, etc.-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--Este es el título de la página web-->
     <title>Frávesta</title>
+
+    <!--Importamos aca el favincon de Frávesta-->
     <link rel="shortcut icon" href="img/fravega-icon.jpg" type="jpg">
+    
+    <!--Se importa la libreria Font Awesome que permite tener iconos vectoriales, es decir, nos permite tener el desplegable en "Productos"-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!--Aca apuntamos a nuestra archivo CSS para darle estilos a nuestra página web-->
     <link rel="stylesheet" href="styles.css">
+    
+    <!--Importamos nuestro código de JavaScript para este proyecto-->
     <script defer src="front.js"></script>
 </head>
+
+<!--En el <body> disponemos los elementos visuales de nuestra página web (es decir, las etiquetas HTML)-->
 <body>
-    <header class="header-nav">
-        <div class="options">
+
+    <!--Cabecera de la página web-->
+    <header class="site-header">
+
+        <!--Este es el logo de la empresa-->
+        <div class="img-container">
+            <img src="img/logo_transparent.png" alt="logo-fravest">
+        </div>
+
+        <!--Aca van las distintas opciones del menu superior de la barra de navegación-->
+        <nav class="options">
+
+            <!--Opción para ir a la página principal-->
             <a href="#">Home</a>
+
+            <!--Opción de productos con menu desplegable-->
             <div class="dropdown">
+                <!--Botón de productos para el desplegable-->
                 <button class="dropBtn">Productos
                     <i class="fa fa-caret-down"></i>
                 </button>
+                <!--Caja que oculta las subopciones para ir al sitio de celulares y al de notebooks-->
                 <div class="dropOptions">
+                    <!--Subopción "Celulares"-->
                     <a href="#Celulares">Celulares</a>
+                    <!--Subopción "Notebooks"-->
                     <a href="#Notebooks">Notebooks</a>
                 </div>    
             </div>
+
+            <!--Opción para ir al carrito de compras-->
             <a href="">Carrito</a>
+
+            <!--Botón interactivo para pasar al modo oscuro-->
             <button class="modoOscuro"><img src="img/modoClaro.png" id="button" width= 50wv></button>
-        </div>
+        </nav>
     </header>
+
+    <!--Sector principal o MAIN de la página web-->
     <main class="main-container">
+
+        <!--Section HERO de la página web con carrusel-->
         <section class="hero">
-            <div class="slideshow-container">
+            
+             <!--Esto contiene el carrusel de imagenes-->
+             <div class="slideshow-container">
             <!-- primera dispositiva -->
                 <div class="mySlides fade">
                     <img src="img/hero.jpg" style="width:100%">
@@ -41,27 +84,42 @@
 
             <!-- tercera dispositiva -->        
                 <div class="mySlides fade">
-                    <img src="img/laptos.png" style="width:100%">
-                </div>
-
-            <!-- cuarta dispositiva -->        
-                <div class="mySlides fade">
                     <img src="img/iphones.jpg" style="width:100%">
                 </div>
 
+                <!--Botones de flechas para moverse entre las diapositivas del carrusel-->
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
         </section>
-        <footer>
-            <div class="footer">
-                <ol>
-                    <li>Nosotros</li>
-                    <li>Contactanos</li>
-                    <li>Sobre nosotros</li>
-                </ol>
+
+        <!--Catalogo donde estan todos nuestros productos-->
+        <section id="catalogo">
+            <!--Título de la parte del catalogo donde iran los nuestras notebooks-->
+            <div class="catalogo-section-title" id="Notebooks">
+                <h4>Notebooks</h4>
             </div>
-        </footer>
-    </main>    
+
+            <!--Aca se van a poner las notebooks-->
+            <div class="products-container" id="notebooks-container">
+
+            </div>
+
+            <!--Título de la parte del catalogo donde iran nuestros celulares-->
+            <div class="catalogo-section-title" id="Celulares">
+                <h4>Celulares</h4>
+            </div>
+
+            <!--Aca se van a poner los celulares-->
+            <div class="products-container" id="celulares-container">
+
+            </div>
+        </section>
+    </main>
+     <!--Pie de página del sitio web-->
+    <footer class="site-footer">
+        <img src="img/logo_transparent.png" alt="logo-fravesta">
+        <p>Una empresa de Federico Muñoz y Miguel Godoy - 2026</p>
+    </footer>
 </body>
 </html>
