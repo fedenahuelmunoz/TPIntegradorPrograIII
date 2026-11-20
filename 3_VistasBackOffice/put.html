@@ -94,6 +94,43 @@
         const contenedorForm = document.getElementById("contenedor-form");
         const getProductForm = document.getElementById("getProductForm");
 
+        // Optimización: validación previa de los datos en el cliente.
+        function validarFormulario(data) {
+            const errores = [];
+
+            if (!data.name || !data.price || !data.image || !data.category) {
+                errores.push("Faltan campos requeridos");
+            }
+
+            // Validamos el campo name
+            if (data.name.length < 2) {
+                errores.push("El nombre del producto tener al menos dos caracteres");
+            }
+
+            // Validamos el campo price
+            if (data.price <= 0) {
+                errores.push("El precio debe ser un número entero mayor a cero");
+            }
+
+            return errores;
+        }
+
+        function mostrarMensaje(tipo, mensaje){
+            //Tarea: darle formato al parrafo que indica el error
+            contenedorProductos.innerHTML = `
+                <p class="mensaje ${tipo}">${mensaje}</p>
+            `;
+        }
+
+        function mostrarListaErrores(array) {
+            let htmlErrores = "";
+            array.forEach(error => {
+                htmlErrores += `<p class="mensaje error">${error}</p>`;
+            });
+
+            contenedorProductos.innerHTML = htmlErrores;
+        }
+
         // Al hacer click en Consultar, hacemos un callback asincrono para pegarle a http://localhost:3000/api/products/x
         getProductForm.addEventListener("submit", async (event) => {
             event.preventDefault(); // Evitamos el envio por defecto del formulario
@@ -102,14 +139,24 @@
 
             // Extraemos el valor del campo con id idProd
             const idProd = event.target.idProd.value.trim();
-            console.log(idProd); // Vemos por consola el valor de id extraido del <form> para parsarselo a la url en el fetch
+            console.log(idProd); // Vemos por consola el valor de id extraido del <form> para parsarselo a la url en el fetch.
+            
+            if(!idProd){
+                return mostrarError("Ingresa un id válido");
+            }
 
             try {
                 const response = await fetch(`${urlBase}/api/products/${idProd}`);
                 console.log(response);
 
                 // Accemos al JSON dentro del cuerpo de la respuesta y lo convertimos a objeto JS
-                const data = await response.json(); 
+                const data = await response.json();
+                
+                // Procesamos respuestas 400 o 500
+                if(!response.ok){
+                    console.error(data.message);
+                    return mostrarMensaje("error", data.message);
+                }
 
                 const producto = data.payload[0]; // Traigo el primer objeto de mi array (de 1 solo objeto)
 
@@ -118,6 +165,8 @@
             } catch (error) {
                 // Estos errores son errores REALES de red, no capturan 404, 500, etc
                 console.error("Error al obtener productos: ", error);
+                return mostrarMensaje("error", "Error de conexión con el servidor");
+
             }
         });
 
@@ -128,7 +177,8 @@
                     <div class="card-text">
                         <h4>Id: ${producto.id} </h4>
                         <h4>Nombre: ${producto.name}</h4>
-                        <h4>Precio: $${producto.price}</h4> 
+                        <h4>Precio: $${producto.price}</h4>
+                        <h4>Estado: ${producto.active}</h4> 
                     </div>
                     <button id="btn-modificar">Modificar</button>    
                 </div>
@@ -174,6 +224,12 @@
                 <label for="priceProd">Precio</label>
                 <input type="number" name="price" id="priceProd" min="1" value="${producto.price}" required>
 
+                <label for="activeProd">Estatus</label>
+                <select name="active" id="activeProd" required>
+                    <option value="1">Activo</option>
+                    <option value="0">Inactivo</option>
+                </select>
+
                 <input type="submit" value="Modificar producto">
 
             </form>
@@ -193,6 +249,19 @@
                 // Transformamos el objeto FormData en un objeto literal JS
                 const formObj = Object.fromEntries(formData.entries());
 
+                // Optimización: parseamos algunos valores del formObj
+                formObj.price = Number(formObj.price); // Mandamos price como número
+                formObj.name = formObj.name.trim(); // Al campo name le quitamos los espacios
+
+                // Como los datos ahora están más limpios, los puedo pasar a la función validadora del cliente.
+                const errores = validarFormulario(formObj);
+
+                // Verificamos que no haya datos errroneos antes de enviar algo al servidor
+                if (errores.length > 0) {
+                    console.error(errores);
+                    return mostrarListaErrores(errores);
+                }
+
                 try {
                     const response = await fetch(`${urlBase}/api/products`, {
                         method: "PUT",
@@ -204,12 +273,19 @@
 
                     const data = await response.json(); // El parseo es una operacion asincrona
 
-                    console.log(data.message);
-                    alert(data.message);
-
-                    // Limpiamos visualmente la pantalla
+                    
+                    // Procesamos respuestas 400 o 500
+                    if(!response.ok){
+                        contenedorForm.innerHTML = "";
+                        console.error(data.message);
+                        return mostrarMensaje("error", data.message);
+                    }
+                    
                     contenedorForm.innerHTML = "";
-                    contenedorProductos.innerHTML = "";
+                    
+                    console.log(data.message);
+                    mostrarMensaje("exito", data.message);
+
 
 
                 } catch (error) {
