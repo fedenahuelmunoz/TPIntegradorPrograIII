@@ -106,7 +106,7 @@ main{
     padding: 1rem;
 }
 
-/*Estilos para el div que tiene la cabecera del formulario y para el formulario en sí de crear producto*/
+/*Estilos para el div que tiene la cabecera del formulario de crear producto y para el formulario en sí de crear producto*/
 .createProduct-container #cabecera-formulario, .createProduct-container #createProductForm{
     display:flex;
     justify-content: center;
@@ -122,6 +122,24 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+/*Estilos para el formulario de modificar producto y su cabecera*/
+
+#contenedor-form h3, #contenedor-form #modifyProductForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Estilo para el h3 (la cabecera) del formulario de modificar producto*/
+#contenedor-form h3{
+    padding: 1rem; /*Deja un espacio para que "Modificar producto" no este tan pegado a la tarjeta del producto seleccionado ni a los campos del form de modificar producto*/
+}
+/*Estilos para los elementos dentro del form de modificar producto propiamente dicho*/
+#contenedor-form #modifyProductForm{
+    gap: 1rem; /*Deja un espaciado entre sus elementos para que no esten tan juntos y apretados*/
 }
 
 /*Estilos para la section donde iran los productos del catalogo*/

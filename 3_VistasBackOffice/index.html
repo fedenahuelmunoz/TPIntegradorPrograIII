@@ -72,17 +72,35 @@
         const urlBase = "http://localhost:3000";
         const contenedorProductos = document.getElementById("contenedor-productos");
 
+        function mostrarError(mensaje){
+            //Tarea: darle formato al parrafo que indica el error
+            contenedorProductos.innerHTML = `
+                <p class="mensaje error">${mensaje}</p>
+            `;
+        }
+        
         async function obtenerProductos() {
             try{
                 const response = await fetch(`${urlBase}/api/products`);
                 console.log(response);
 
                 const data = await response.json();
+                
+                // Filtramos los códigos de response HTTP por fuera del rango 200 (por ejemplo, 400 o 500).
+                if(!response.ok){
+                    // Muestro el error por pantalla
+                    console.error(data.message);
+                    return mostrarError(data.message);
+                }
+
                 const products = data.payload;
 
                 renderizarProductos(products);
             }catch(error){
+                // Este catch atrapa unicamente errores REALES de red (no errores 404, 500, etc).
                 console.error("Error al obtener los productos", error);
+                return mostrarError("Error de conexión con el servidor");
+
             }
         }
         function renderizarProductos(array){

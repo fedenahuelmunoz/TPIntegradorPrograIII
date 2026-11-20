@@ -89,6 +89,13 @@
         const contenedorProductos = document.getElementById("contenedor-productos");
         const getProductForm = document.getElementById("getProductForm");
 
+        function mostrarError(mensaje){
+            //Tarea: darle formato al parrafo que indica el error
+            contenedorProductos.innerHTML = `
+                <p class="mensaje error">${mensaje}</p>
+            `;
+        }
+
         // Al hacer click en Consultar, hacemos un callback asincrono para pegarle a http://localhost:3000/api/products/x
         getProductForm.addEventListener("submit", async (event) => {
             event.preventDefault(); // Evitamos el envio por defecto del formulario
@@ -99,12 +106,22 @@
             const idProd = event.target.idProd.value.trim();
             console.log(idProd); // Vemos por consola el valor de id extraido del <form> para parsarselo a la url en el fetch
 
-            try {
+            if(!idProd){
+                return mostrarError("Ingresa un id válido");
+            }
+                try {
                 const response = await fetch(`${urlBase}/api/products/${idProd}`);
                 console.log(response);
 
                 // Accemos al JSON dentro del cuerpo de la respuesta y lo convertimos a objeto JS
-                const data = await response.json(); 
+                const data = await response.json();
+                
+
+                // Procesamos respuestas 400 o 500
+                if(!response.ok){
+                    console.error(data.message);
+                    return mostrarError(data.message);
+                }
 
                 const producto = data.payload[0]; // Traigo el primer objeto de mi array (de 1 solo objeto)
 
@@ -113,6 +130,7 @@
             } catch (error) {
                 // Estos errores son errores REALES de red, no capturan 404, 500, etc
                 console.error("Error al obtener productos: ", error);
+                return mostrarError("Error de conexión con el servidor");
             }
         });
 
