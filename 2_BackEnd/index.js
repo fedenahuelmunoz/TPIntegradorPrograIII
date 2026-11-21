@@ -42,6 +42,7 @@ app.use("/api/products", productRoutes);
 
 
 // app.get("/dashboard", viewRoutes);
+
 // Opción sin modularizar las rutas del dashboard del Back Office
 // app.get("/dashboard/principal", vistaPrincipal);
 // app.get("/dashboard/consultar", consultar);
