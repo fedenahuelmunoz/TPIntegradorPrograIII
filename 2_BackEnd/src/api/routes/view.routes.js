@@ -3,34 +3,24 @@ Rutas de las vistas
 ==============================*/
 
 import { Router } from "express";
+import { vistaConsultar, vistaCrear, vistaEliminar, vistaModificar, vistaPrincipal } from "../controllers/view.controllers";
 const router = Router();
 
 
 // Vista de la pantalla principal del sitio web
-router.get("/principal", (req, res) => {
-    // Nuestra aplicación renderiza la vista en src/views/index.js
-    res.render("index");
-});
+router.get("/principal", vistaPrincipal);
 
 // Vista consultar
-router.get("/consultar", (req, res) => {
-    res.render("get");
-});
+router.get("/consultar", vistaConsultar);   
 
 // Vista crear
-router.get("/crear", (req, res) => {
-    res.render("post");
-});
+router.get("/crear", vistaCrear);
 
 // Vista modificar
-router.get("/modificar", (req, res) => {
-    res.render("put");
-});
+router.get("/modificar",vistaModificar);
 
 // Vista eliminar
-router.get("/eliminar", (req, res) => {
-    res.render("delete");
-});
+router.get("/eliminar", vistaEliminar);
 
 // Exportamos las rutas de las vistas (todas de una).
 export default router;
