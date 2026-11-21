@@ -52,7 +52,7 @@ const deleteProduct = (id) =>{
 /*====================================================================*/
 //obtenemos todos los productos activos.
 const selectActiveProducts = () =>{
-    const sql = "SELECT  * FORM PRODUCTS WHERE products.active = ? ";
+    const sql = "SELECT  * FROM PRODUCTS WHERE products.active = ? ";
     return connection.query(sql,[1]);
 }
 // Exportamos todas estas llamadas de los productos.
