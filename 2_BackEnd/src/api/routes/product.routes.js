@@ -4,12 +4,15 @@ Rutas producto
 
 import { Router } from "express"; // Router funciona como una "mini aplicación de express".
 import { validateId, validateProduct } from "../middlewares/middlewares.js";
-import { createProduct, deleteProduct, getAllProducts, getProductById, modifyProduct, modifyProductActive } from "../controllers/products.controllers.js";
+import { createProduct, deleteProduct, getActiveProducts, getAllProducts, getProductById, modifyProduct, modifyProductActive } from "../controllers/products.controllers.js";
 const router = Router(); // Hacemos lo mismo que con const app = express(); -> Es decir, hacer como una mini-aplicación
 // El router se encarga de manejar las peticiones GET, POST, etc.
 
 // Método GET para obtener todos los productos de nuestra tienda
 router.get("/", getAllProducts);//Importamos el controlador para traer todos los productos.
+
+// Metodo GET para obtener todos los productos ACTIVOS.
+router.get("/active", getActiveProducts); 
 
 // Método Get para obtener un producto por su ID
 router.get("/:id", validateId, getProductById);//Tambien importamos el controlador para obtener producto por id. 

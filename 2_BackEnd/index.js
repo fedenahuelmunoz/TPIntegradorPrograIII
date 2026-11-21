@@ -40,7 +40,6 @@ app.get("/", (req, res) => {
 // Se redireccionan todas las peticiones a /api/products al modulo product.routes.js
 app.use("/api/products", productRoutes);
 
-
 // app.get("/dashboard", viewRoutes);
 
 // Opción sin modularizar las rutas del dashboard del Back Office
@@ -56,4 +55,3 @@ app.use("/api/products", productRoutes);
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`); // Mensaje de comprobación para la consola
 });
-

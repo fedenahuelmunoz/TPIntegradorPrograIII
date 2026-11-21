@@ -34,7 +34,7 @@ const insertNewProduct = (name, image, category, price)=>{
 
 /*====================================================================*/
 //Modificamos un producto
-const updateProduct = (id, name, image, price, category, active) => {
+const updateProduct = (name, image, price, category, active, id) => {
     const sql = "UPDATE products SET name = ?, image = ?, price = ?, category = ?, active = ? WHERE id = ?";
     return connection.query(sql, [name, image, price, category, active, id]);
 }
@@ -45,14 +45,22 @@ const updateProduct = (id, name, image, price, category, active) => {
 const deleteProduct = (id) =>{
     // Los placeholders -> "?" nos ayudan a evitar los ataques de inyeccion SQL. Es nuestra manera de hacer consultas SQL mas seguras.
     const sql = "DELETE FROM products WHERE id = ?";
-    return connection.query(sql, [req.id]);
+    return connection.query(sql, [id]);
 }
 
+
+/*====================================================================*/
+//obtenemos todos los productos activos.
+const selectActiveProducts = () =>{
+    const sql = "SELECT  * FORM PRODUCTS WHERE products.active = ? ";
+    return connection.query(sql,[1]);
+}
 // Exportamos todas estas llamadas de los productos.
 export default{
     selectAllProducts,
     selectById,
     insertNewProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    selectActiveProducts
 }

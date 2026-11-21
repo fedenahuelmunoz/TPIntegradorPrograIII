@@ -77,7 +77,7 @@ export const createProduct = async (req, res) => {
         // Aca ya directamente recibimos un objeto
         const {category, image, name, price} = req.body; // Extraemos los valores parseados del cuerpo de la peticion HTTP
     
-        const [result] = await productsModels.insertNewProducts(name, image, category, price);
+        const [result] = await productsModels.insertNewProduct(name, image, category, price);
 
         console.log(result);
     
@@ -179,5 +179,30 @@ export const modifyProductActive = async (req, res) => {
         });
     }
 
+};
+
+// Método get para obtener todos los productos activos.
+export const getActiveProducts = async(req, res) =>{//Dejamos "/active" por que ya viene con /api/products
+    try{
+        //Hacemos la llamada al modelo para obtener los productos activos
+        const [rows] =  await productsModels.selectActiveProducts();
+        // Optimización 4: Devolvemos un código 404 si no se encontró un producto activo.
+        if (rows.length == 0){
+            return res.status(404).json({
+                message: "No se encontraron productos activos"
+            });
+        }
+
+        res.status(200).json({
+            payloads : rows
+        });
+    }catch (error) {
+        console.log("Error obteniendo productos activos: ", error);
+
+        // 500 si falló la conexión a la BBDD
+        res.status(500).json ({
+            message: "Error interno al obtener productos"
+        });
+    }
 };
 
