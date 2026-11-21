@@ -4,66 +4,30 @@
 <!--Sector principal de la página principal del Back Office-->
     <main>
         <!--Sector donde iran los productos de nuestro catalogo para mostrarlos-->
+        <!-- JAVASCRIPT EMBEBIDO-->
         <section id="contenedor-productos">
+            <% ListaProductos.forEach(producto => {%>
+                <div class="card-producto">
+                        <img class="card-img" src="<%=producto.image%>" alt="<%=producto.name%>">
 
+                        <div class="card-text">
+
+                            <h3>Id: <%=producto.id%></h3>
+
+                            <h4><%=producto.name%></h4>
+
+                            <h3><%=producto.category%></h3>
+
+                            <h3>$ <%=producto.price%></h3>
+
+                            <h3>Estado: <%=producto.active%></h3>
+
+                        </div>
+                    </div>    
+               <% })%>
         </section>
     </main>
 
 
-    <script>
-        const urlBase = "http://localhost:3000";
-        const contenedorProductos = document.getElementById("contenedor-productos");
-
-        function mostrarError(mensaje){
-            //Tarea: darle formato al parrafo que indica el error
-            contenedorProductos.innerHTML = `
-                <p class="mensaje error">${mensaje}</p>
-            `;
-        }
-        
-        async function obtenerProductos() {
-            try{
-                const response = await fetch(`${urlBase}/api/products`);
-                console.log(response);
-
-                const data = await response.json();
-                
-                // Filtramos los códigos de response HTTP por fuera del rango 200 (por ejemplo, 400 o 500).
-                if(!response.ok){
-                    // Muestro el error por pantalla
-                    console.error(data.message);
-                    return mostrarError(data.message);
-                }
-
-                const products = data.payload;
-
-                renderizarProductos(products);
-            }catch(error){
-                // Este catch atrapa unicamente errores REALES de red (no errores 404, 500, etc).
-                console.error("Error al obtener los productos", error);
-                return mostrarError("Error de conexión con el servidor");
-
-            }
-        }
-        function renderizarProductos(array){
-            let htmlProductos = "";
-
-            array.forEach(products  => {
-                htmlProductos += `
-                    <div class="card-producto">
-                        <img class="card-img" src="${products.image}" alt="${products.name}">
-                        <div class="card-text">
-                            <h3>Id: ${products.id}</h3>
-                            <h4>${products.name}</h4>
-                            <h3>${products.category}</h3>
-                            <h3>$${products.price}</h3>
-                            <h3>Estado: ${products.active}</h3>
-                        </div>
-                    </div>    
-                `;    
-            });
-            contenedorProductos.innerHTML =htmlProductos;
-        }
-        obtenerProductos();
-    </script>
+    
 <%- include("partials/footer.ejs") %>

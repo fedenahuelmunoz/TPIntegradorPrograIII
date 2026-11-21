@@ -3,7 +3,7 @@ Rutas de las vistas
 ==============================*/
 
 import { Router } from "express";
-import { vistaConsultar, vistaCrear, vistaEliminar, vistaModificar, vistaPrincipal } from "../controllers/view.controllers";
+import { vistaConsultar, vistaCrear, vistaEliminar, vistaModificar, vistaPrincipal } from "../controllers/view.controllers.js";
 const router = Router();
 
 
