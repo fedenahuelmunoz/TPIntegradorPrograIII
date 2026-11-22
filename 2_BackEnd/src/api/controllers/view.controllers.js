@@ -12,6 +12,7 @@ export const vistaPrincipal = async (req, res) => {
         //Le pedimos al modelo de productos que nos devuelva todos los productos.
         const [rows] = await productsModels.selectAllProducts();
         res.render("index", {
+            title: "Principal",//Personalizacion del nombre con la variable title
             ListaProductos: rows
         });
     } catch (error) {
@@ -27,23 +28,29 @@ export const vistaPrincipal = async (req, res) => {
 
 //Vista consultar
 export const vistaConsultar = (req, res) => {
-    res.render("get");
-};
+    res.render("get",{
+        title: "Obtener",//Personalizacion del nombre con la variable title
+    });
+}
 
 
 //Vista crear
 export const vistaCrear = (req, res) => {
-    res.render("post");
-};
-
+    res.render("post",{
+        title: "Crear",//Personalizacion del nombre con la variable title;
+});
+}
 
 //Vista modificar
 export const vistaModificar = (req, res) => {
-    res.render("put");
-};
-
+    res.render("put",{
+        title: "Modificar",//Personalizacion del nombre con la variable title;
+});
+}
 
 //Vista eliminar 
 export const vistaEliminar = (req, res) => {
-    res.render("delete");
-};
+    res.render("delete",{
+        title: "Eliminar",//Personalizacion del nombre con la variable title);
+});
+}
