@@ -66,10 +66,19 @@ const validateProduct = (req, res, next) => {
 
     next(); // Si no pongo next este middleware nunca pasa al siguiente middleware o a la response HTTP. Por ende, queda colgado.
 } 
+//Middleware para proteger las rutas(las vistas del dashboard)
+const requireLogin = (req,res, next) =>{
+    //Si no existe un usuario en la sesion, redigirigimos a la pantalla login
+    if (!req.session.user){
+        return res.redirect("/login")
+    }
+    next();
+}
 
 // Hay que exportar los middlewares para exportarlos a otros archivos.
 export {
     loggerUrl,
     validateId,
-    validateProduct
+    validateProduct,
+    requireLogin
 }
