@@ -190,9 +190,6 @@ body{
     gap: 1.5rem; /* Esto permite dejar un espacio entre tarjeta y tarjeta*/
     margin-bottom: 3rem; /*Espacio entre cada contenedor de productos*/
 }
-#carrito-container{
-    text-align: center;
-}
 
 /* Estilo para cada tarjeta individual que contiene cada producto del catalogo*/
 .card-producto {
@@ -247,6 +244,54 @@ body{
     margin-top: 0.4rem;
     font-size: 0.9rem;
     cursor: pointer;
+}
+
+/*Estilos para las section id="carrito-compras" la cual contiene nuestro carrito de compras*/
+#carrito-compras h3, #carrito-compras p{
+    display: flex;
+    justify-content: center;
+}
+
+/*Estilos para cada div de class "item-carrito" que es para cada producto agregado por el cliente al carrito*/
+#carrito-compras #carrito-container .item-carrito{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+#carrito-compras #carrito-container .item-carrito h4{
+    margin: 0;
+}
+
+#carrito-compras #carrito-container .item-carrito #eliminar-producto{
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: orange;
+    color: rgb(6, 22, 48)
+}
+
+/*Estilos para los botones de vaciar carrito y de imprimir ticket del carrito de compras*/
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block; /* o block / flex según el elemento */
+}
+
+.cart-buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+#empty-cart, #btn-imprimir{
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background-color: rgb(90, 24, 90);
+    color:azure;
 }
 
 /*===========================================
@@ -309,6 +354,7 @@ body{
     background-color: rgb(6, 22, 48);
     color: #f9f9f9;
 }
+
 /*===*/
 
 

@@ -1,4 +1,3 @@
-
 /*Con querySelector buscamos el primer elemento con la clase modoOscuro: el botón del header*/
 const pantalla = document.querySelector(".modoOscuro")
 
@@ -96,69 +95,83 @@ function renderizarProductos(array, contenedorDestino) {
     contenedorDestino.innerHTML = htmlProductos;
 }
 obtenerProductosActivos();
-/*Código JS para darle intectividad a nuestro sitio web*/
+
+
+/*Código JS para manejar el carrito de compras*/
 let objetosCarrito = document.getElementById("carrito-container");
 const totalCarrito = document.getElementById("total-carrito");
-let carrito = [];
+let carrito = []; // Es nuestro array de productos que el cliente agrega al carrito
 let productos = [];
 
+// Función para mostrar nuestro carrito de compras
 function mostrarCarrito (){
-    let carritoCompra = "";
-    let precioTotal = 0;
+    let carritoCompra = ""; // Aca va el HTML al agregarse productos al carrito
+    let precioTotal = 0; // Precio inicial al iniciar la compra
 
+    // Se recorre cada producto agregado al carrito para asignarle código HTML
     carrito.forEach((producto,indice) =>{
         carritoCompra +=`
-            <div>
-
-                <h3 >${producto.name} - $${producto.price} </h3>
-                <button class="delete-btn" onclick="eliminar(${indice})">Eliminar</button>
+            <div class="item-carrito">
+                <h4>${producto.name} - $${producto.price} </h4>
+                <button class="delete-btn" id="eliminar-producto" onclick="eliminar(${indice})">Eliminar</button>
             </div>
             `;
-        precioTotal += Number(producto.price);
-            });
+        precioTotal += Number(producto.price); // Sumamos el precio de cada producto agregado al carrito al precio total del cliente.
+    
+    });
 
-//Imprimir  HTML de producto
-objetosCarrito.innerHTML = carritoCompra;
-//Mostrar precio total y contador carrito
-totalCarrito.innerHTML = `${precioTotal}`
+    //Imprimir HTML de los productos en pantalla
+    objetosCarrito.innerHTML = carritoCompra;
 
+    //Mostrar precio total
+    totalCarrito.innerHTML = `${precioTotal}`
 
-if(carrito.length > 0) {
-    document.getElementById("empty-cart").classList.remove("hidden");
-    document.getElementById("empty-cart").classList.add("visible");
+    // Cuando no hay productos en el carrito no se muestran los botones de "Vaciar carrito" y de "Imprimir Ticket"
+    if(carrito.length > 0) {
+        document.getElementById("empty-cart").classList.remove("hidden");
+        document.getElementById("empty-cart").classList.add("visible");
 
-    document.getElementById("btn-imprimir").classList.remove("hidden");
-    document.getElementById("btn-imprimir").classList.add("visible");
-} else {
-    document.getElementById("empty-cart").classList.remove("visible");
-    document.getElementById("empty-cart").classList.add("hidden");
-    document.getElementById("btn-imprimir").classList.remove("visible");
-    document.getElementById("btn-imprimir").classList.add("hidden");
+        document.getElementById("btn-imprimir").classList.remove("hidden");
+        document.getElementById("btn-imprimir").classList.add("visible");
+    } else {
+        document.getElementById("empty-cart").classList.remove("visible");
+        document.getElementById("empty-cart").classList.add("hidden");
+        document.getElementById("btn-imprimir").classList.remove("visible");
+        document.getElementById("btn-imprimir").classList.add("hidden");
 
-    objetosCarrito.innerHTML = '<p class="info-carrito">No hay productos en el carrito .</p>';
-}
+        // Se muestra esto en pantalla en caso de que no haya ningun producto agregado al carrito.
+        objetosCarrito.innerHTML = '<p class="info-carrito">No hay productos en el carrito .</p>';
+    }
 };
 
-
-
+// Funcionalidad para agregar un producto al carrito
 function agregarCarrito(id){
-    console. log( `id del producto: ${id}` );
+    console.log(`id del producto: ${id}`);
     const productoSeleccionado = productos.find(producto => producto.id == id);
     if (!productoSeleccionado) {
-        console.warn("No se encontró el producto con id:", id);
+        console.error("No se encontró el producto con id:", id);
         return;
     }
-    carrito.push(productoSeleccionado);
+    carrito.push(productoSeleccionado); // Con push se agrerga un producto al array carrito
 
-mostrarCarrito();
+    mostrarCarrito();
 }
+
+// Funcionalidad para eliminar un producto del carrito
 function eliminar(indice) {
     carrito.splice(indice, 1);
     mostrarCarrito();
 }
-const nombreGuardado = sessionStorage.getItem("nombreUsuario");
-const cliente = document.getElementById("nombre-cliente");
+
+// Función para vaciar el carrito de productos
+function vaciarCarrito() {
+    carrito = [];
+    mostrarCarrito();
+}
+
+const nombreGuardado = sessionStorage.getItem("nombreUsuario"); // Se busca en sessionStorage el nombre ingresado en el formulario de bienvenida del cliente
+const cliente = document.getElementById("nombre-cliente"); // Seleccionamos el elemento HTML donde debe figurar el nombre del cliente
 
 if (cliente && nombreGuardado) {
-    cliente.textContent = nombreGuardado;
+    cliente.textContent = nombreGuardado; // Permite cambiar el contenido de "Invitado" al nombre verdadero del cliente en la página principal
 }
