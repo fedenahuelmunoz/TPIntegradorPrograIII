@@ -13,6 +13,30 @@ body{
 /*===========================================
     Estilos para el HEADER de la página web
 ============================================*/
+
+/*Formato para el header de la página de login del cliente*/
+#encabezado-login{
+    background-color: rgb(90, 24, 90);
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+/*Formato para el main de la pantalla de login del cliente y para el formulario de ingreso*/
+.main-login, .main-login .form-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-login .cabecera-form-login{
+    padding: 1.5rem;
+}
+.main-login .form-login{
+    gap: 1rem;
+}
+
 /*Formato general del header*/
 .site-header{
     background-color: white; /*Color blanco para el header*/

@@ -80,6 +80,12 @@ getProductForm.addEventListener("submit", async (event) => {
 });
 
 function renderizarProducto(producto) {
+    // Le asiganmos la etiqueta de "activo" o "inactivo" al producto de acuerdo al número que tenga en el campo active.
+    let estado = "inactivo";
+    if (Number(producto.active) === 1){
+        estado = "activo";
+    }
+
     let htmlProducto = `
         <div class="card-producto">
             <img src="${producto.image}" alt="${producto.name}" class="card-img">
@@ -87,7 +93,7 @@ function renderizarProducto(producto) {
                 <h4>Id: ${producto.id} </h4>
                 <h4>Nombre: ${producto.name}</h4>
                 <h4>Precio: $${producto.price}</h4>
-                <h4>Estado: ${producto.active}</h4> 
+                <h4>Estado: ${estado}</h4> 
             </div>
             <button id="btn-modificar">Modificar</button>    
         </div>

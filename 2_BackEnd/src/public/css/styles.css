@@ -19,6 +19,32 @@ h4{
 }
 
 /*===========================================
+    Estilos para la vista de login
+============================================*/
+.cabecera-form-login{
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.form-login{
+    display: flex;
+    flex-direction: column;  
+    justify-content: center; 
+    align-items: center;
+    gap: 0.7rem;
+}
+
+/*Estilo para el botón de login que será compartido por el botón de logout*/
+.btn-log{
+    background-color: rgb(128, 29, 217);
+    color:aliceblue;
+    border-radius: 1rem;
+    width: 6rem;
+    height: 2rem;
+}
+
+
+/*===========================================
     Estilos para el HEADER del Back Office
 ============================================*/
 /*Formato general del header*/
@@ -26,7 +52,7 @@ h4{
     background-color: rgb(90, 24, 90);
     
     display:flex;
-    justify-content:center;
+    justify-content: center;
     flex-wrap: wrap;
     align-items: center;
 
@@ -77,6 +103,11 @@ h4{
     text-align: center;
     padding: 0.5rem 1rem;
     text-decoration: none;
+}
+
+/*Estilo para el botón de logout del dashboard*/
+.header-nav #btn-logout{
+    padding-left: 3rem;
 }
 
 /*===========================================
@@ -197,6 +228,12 @@ main{
     width: 100%;
 }
 
+/*Estilo para las tarjetas de productos que son inactivos o dados de baja lógica*/
+.card-producto.inactivo{
+    opacity: 0.5; /*Le damos menos opacidad a los productos inactivos*/
+}
+
+
 /*===========================================
     Estilos para el FOOTER de la página web
 ============================================*/
@@ -216,29 +253,12 @@ footer img{
     width: 8vw;
     height: auto;
 }
-/*===========================================
-    Estilos para la vista de login
-============================================*/
-.centrado{
-    text-align: center;
-}
-.form-login{
-    
-    display: flex;
-    flex-direction: column;  
-    justify-content: center; 
-    align-items: center;
-    
-}
-input[type="submit" i] {
-    background-color: rgb(128, 29, 217)
-}
 
 
 /* ===========================================
    MEDIAS QUERY
    =========================================== */
-@media (max-width: 768px) { /*Pantalla de menos de 768px*/
+@media (max-width: 840px) { /*Pantalla de menos de 768px*/
     .back-office-header {
         height: auto;
         flex-direction: column; /*Pone el logo arriba y el nav abajo*/
@@ -257,5 +277,11 @@ input[type="submit" i] {
 
     footer p{
         font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 730px) {
+    .header-nav #btn-logout {
+        padding-left: 0;
     }
 }

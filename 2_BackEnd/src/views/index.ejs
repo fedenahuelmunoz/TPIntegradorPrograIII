@@ -7,7 +7,16 @@
         <!-- JAVASCRIPT EMBEBIDO-->
         <section id="contenedor-productos">
             <% ListaProductos.forEach(producto => {%>
-                <div class="card-producto">
+                <%
+                    let estado = "inactivo";
+                    if (Number(producto.active) === 1) {
+                        estado = "activo";
+                    }
+                %>
+
+                <!--Le ponemos dos clases distintas a un mismo elemento HTML separando cada clase con un espacio
+                Esto es lo que hacemos con cada carta que contiene un producto inactivo-->
+                <div class="card-producto <%=estado%>">
                         <img class="card-img" src="<%=producto.image%>" alt="<%=producto.name%>">
 
                         <div class="card-text">
@@ -20,7 +29,7 @@
 
                             <h3>$ <%=producto.price%></h3>
 
-                            <h3>Estado: <%=producto.active%></h3>
+                            <h3>Estado: <%= estado %></h3>
 
                         </div>
                     </div>    

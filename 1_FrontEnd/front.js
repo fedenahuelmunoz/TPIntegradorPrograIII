@@ -55,21 +55,22 @@ const urlBase = "http://localhost:3000";
 const contenedorNotebooks = document.getElementById("notebooks-container");
 const contenedorCelulares = document.getElementById("celulares-container");
 
-async function obtenerProductos() {
+async function obtenerProductosActivos(){
     try {
-        const response = await fetch(`${urlBase}/api/products`);
+        const response = await fetch(`${urlBase}/api/products/active`); // Así obtenemos los productos activos
         console.log(response);
 
         const data = await response.json();
-        const products = data.payload;
+        const products = data.payloads;
 
         // Filtramos los productos según su categoría
-        const notebooks = products.filter(item => item.category.toLowerCase() === "notebook");
-        const celulares = products.filter(item => item.category.toLowerCase() === "cellphone");
+        const notebooksActivas = products.filter(item => item.category.toLowerCase() === "notebook");
+        const celularesActivos = products.filter(item => item.category.toLowerCase() === "cellphone");
+
 
         // Renderizamos cada grupo en su contenedor correspondiente
-        renderizarProductos(notebooks, contenedorNotebooks);
-        renderizarProductos(celulares, contenedorCelulares);
+        renderizarProductos(notebooksActivas, contenedorNotebooks);
+        renderizarProductos(celularesActivos, contenedorCelulares);
 
     } catch (error) {
         console.error("Error al obtener los productos", error);
@@ -84,9 +85,7 @@ function renderizarProductos(array, contenedorDestino) {
             <div class="card-producto">
                 <img class="card-img" src="${products.image}" alt="${products.name}">
                 <div class="card-text">
-                    <h3>Id: ${products.id}</h3>
                     <h4>${products.name}</h4>
-                    <h3>${products.category}</h3>
                     <h3>$${products.price}</h3>
                     <button class="btn-agregar">Agregar al carrito</button>
                 </div>
@@ -97,4 +96,6 @@ function renderizarProductos(array, contenedorDestino) {
     contenedorDestino.innerHTML = htmlProductos;
 }
 
-obtenerProductos();
+
+
+obtenerProductosActivos();
