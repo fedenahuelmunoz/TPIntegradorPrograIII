@@ -175,3 +175,42 @@ const cliente = document.getElementById("nombre-cliente"); // Seleccionamos el e
 if (cliente && nombreGuardado) {
     cliente.textContent = nombreGuardado; // Permite cambiar el contenido de "Invitado" al nombre verdadero del cliente en la página principal
 }
+
+//
+const boton_imprimir = document.querySelector("#btn-imprimir");
+
+boton_imprimir.addEventListener("click",imprimirTicket);
+
+const fecha = new Date();
+
+const fechaFormato = fecha.toISOString().slice(0,19).replace("T"," ");
+
+function imprimirTicket(){
+
+    let precioTotal = 0;
+
+    console.table(carrito);
+
+    const idProductos = [];
+
+    const {jsPDF} = window.jspdf;
+
+    const doc = new jsPDF();
+    let  x = 15;
+    let y = 55;
+    let z = 180;
+    doc.text("Ticket de compra",80,10);
+    doc.text(`Cliente: ${nombreGuardado}`,x,25);
+    doc.text(`Fecha : ${fechaFormato}`,x,35);
+    doc.text("Detalle de la compra: ",x, 45)
+    carrito.forEach(producto => {
+        idProductos.push(producto.id);
+        doc.text(`-${producto.name}`,x,y);
+        doc.text(`$${producto.price}`,z,y);
+        y+= 15;
+        precioTotal += Number(producto.price); // Sumamos el precio de cada producto agregado al carrito al precio total del cliente.
+    });
+        doc.text("-------------------------------------------------",x,y)
+        doc.text(`Precio total: $${precioTotal}`,135,y+20);
+        doc.save("ticket.pdf");
+}
