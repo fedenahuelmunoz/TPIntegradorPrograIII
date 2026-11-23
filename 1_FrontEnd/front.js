@@ -1,4 +1,3 @@
-/*Código JS para darle intectividad a nuestro sitio web*/
 
 /*Con querySelector buscamos el primer elemento con la clase modoOscuro: el botón del header*/
 const pantalla = document.querySelector(".modoOscuro")
@@ -61,11 +60,12 @@ async function obtenerProductosActivos(){
         console.log(response);
 
         const data = await response.json();
-        const products = data.payloads;
+        productos = data.payloads || [];
+        console.log("productos cargados:", productos);
 
         // Filtramos los productos según su categoría
-        const notebooksActivas = products.filter(item => item.category.toLowerCase() === "notebook");
-        const celularesActivos = products.filter(item => item.category.toLowerCase() === "cellphone");
+        const notebooksActivas = productos.filter(item => item.category.toLowerCase() === "notebook");
+        const celularesActivos = productos.filter(item => item.category.toLowerCase() === "cellphone");
 
 
         // Renderizamos cada grupo en su contenedor correspondiente
@@ -87,7 +87,7 @@ function renderizarProductos(array, contenedorDestino) {
                 <div class="card-text">
                     <h4>${products.name}</h4>
                     <h3>$${products.price}</h3>
-                    <button class="btn-agregar">Agregar al carrito</button>
+                    <button class="btn-agregar" onclick="agregarCarrito(${products.id})">Agregar al carrito</button>
                 </div>
             </div>    
         `;    
@@ -95,7 +95,70 @@ function renderizarProductos(array, contenedorDestino) {
 
     contenedorDestino.innerHTML = htmlProductos;
 }
-
-
-
 obtenerProductosActivos();
+/*Código JS para darle intectividad a nuestro sitio web*/
+let objetosCarrito = document.getElementById("carrito-container");
+const totalCarrito = document.getElementById("total-carrito");
+let carrito = [];
+let productos = [];
+
+function mostrarCarrito (){
+    let carritoCompra = "";
+    let precioTotal = 0;
+
+    carrito.forEach((producto,indice) =>{
+        carritoCompra +=`
+            <div>
+
+                <h3 >${producto.name} - $${producto.price} </h3>
+                <button class="delete-btn" onclick="eliminar(${indice})">Eliminar</button>
+            </div>
+            `;
+        precioTotal += Number(producto.price);
+            });
+
+//Imprimir  HTML de producto
+objetosCarrito.innerHTML = carritoCompra;
+//Mostrar precio total y contador carrito
+totalCarrito.innerHTML = `${precioTotal}`
+
+
+if(carrito.length > 0) {
+    document.getElementById("empty-cart").classList.remove("hidden");
+    document.getElementById("empty-cart").classList.add("visible");
+
+    document.getElementById("btn-imprimir").classList.remove("hidden");
+    document.getElementById("btn-imprimir").classList.add("visible");
+} else {
+    document.getElementById("empty-cart").classList.remove("visible");
+    document.getElementById("empty-cart").classList.add("hidden");
+    document.getElementById("btn-imprimir").classList.remove("visible");
+    document.getElementById("btn-imprimir").classList.add("hidden");
+
+    objetosCarrito.innerHTML = '<p class="info-carrito">No hay productos en el carrito .</p>';
+}
+};
+
+
+
+function agregarCarrito(id){
+    console. log( `id del producto: ${id}` );
+    const productoSeleccionado = productos.find(producto => producto.id == id);
+    if (!productoSeleccionado) {
+        console.warn("No se encontró el producto con id:", id);
+        return;
+    }
+    carrito.push(productoSeleccionado);
+
+mostrarCarrito();
+}
+function eliminar(indice) {
+    carrito.splice(indice, 1);
+    mostrarCarrito();
+}
+const nombreGuardado = sessionStorage.getItem("nombreUsuario");
+const cliente = document.getElementById("nombre-cliente");
+
+if (cliente && nombreGuardado) {
+    cliente.textContent = nombreGuardado;
+}

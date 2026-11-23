@@ -190,6 +190,9 @@ body{
     gap: 1.5rem; /* Esto permite dejar un espacio entre tarjeta y tarjeta*/
     margin-bottom: 3rem; /*Espacio entre cada contenedor de productos*/
 }
+#carrito-container{
+    text-align: center;
+}
 
 /* Estilo para cada tarjeta individual que contiene cada producto del catalogo*/
 .card-producto {
