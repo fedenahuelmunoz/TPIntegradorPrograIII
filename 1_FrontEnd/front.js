@@ -176,14 +176,15 @@ if (cliente && nombreGuardado) {
     cliente.textContent = nombreGuardado; // Permite cambiar el contenido de "Invitado" al nombre verdadero del cliente en la página principal
 }
 
-//
+// Funcionalidades para registrar la venta e imprimir el ticket
+
 const boton_imprimir = document.querySelector("#btn-imprimir");
 
 boton_imprimir.addEventListener("click",imprimirTicket);
 
 const fecha = new Date();
 
-const fechaFormato = fecha.toISOString().slice(0,19).replace("T"," ");
+const fechaFormato = fecha.toISOString().slice(0, 19).replace("T"," "); // Esta fecha ya está estandarizada para que la acepte mysql
 
 function imprimirTicket(){
 
@@ -214,3 +215,78 @@ function imprimirTicket(){
         doc.text(`Precio total: $${precioTotal}`,135,y+20);
         doc.save("ticket.pdf");
 }
+
+/*
+// Ininicializamos en cero el total de la compra
+let totalVenta = 0;
+
+// Inicializamos un array vacio donde acumularemos los id's (no repetidos) de los productos en el carrito
+let listaIdProductosEnCarrito= [];
+
+// Recorremos el carrito y vamos asignandole el precio de cada producto agregado por el cliente
+carrito.forEach(producto => {
+    totalVenta += Number(producto.price);
+    listaIdProductosEnCarrito.push(producto.id); 
+})
+
+
+// Filtramos de id's repetidos el array listaIdProductosCarrito para que no haya problemas al hacer una inserción en la BBDD en la tabla product_sales
+listaIdProductosEnCarrito = [...new Set(listaIdProductosEnCarrito)];
+*/
+
+// Función para registrar una venta
+async function registrarVenta(total, idProductos, fechaVenta, userName) {
+    const data = {
+        date: fechaVenta, // Esta fecha debe ya estar formateada para mysql
+        total_price: total, // Monto total que se ve en el ticket
+        user_name: userName, // Nombre del usario guardado en sessionStorage
+        products: idProductos // Array de id's de los productos del carrito sin repetir
+    }
+
+    // Ahora hacemos la petición HTTP para registrar la venta.
+    const response = await fetch ("http://localhost:3000/api/sales", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if(response.ok){
+        console.log(response);
+        alert(result.message);
+        // Reiniciamos la aplicación una vez registrada la compra
+        sessionStorage.removeItem("nombreUsuario");
+        window.location.href ="login.html";
+    } else {
+        alert(result.message);
+    }
+
+    
+}
+
+// Función para preparar los datos de la venta
+function confirmarVenta() {
+
+    let totalVenta = 0;
+    let listaIdProductosEnCarrito = [];
+
+    // Recorremos el carrito para calcular el total y obtener los IDs
+    carrito.forEach(producto => {
+        totalVenta += Number(producto.price);
+        listaIdProductosEnCarrito.push(producto.id);
+    });
+
+    // Eliminamos los IDs repetidos
+    listaIdProductosEnCarrito = [...new Set(listaIdProductosEnCarrito)];
+
+    console.log("Total de la venta:", totalVenta);
+    console.log("Productos seleccionados:", listaIdProductosEnCarrito);
+
+    // Enviamos los datos al Backend
+    registrarVenta(totalVenta, listaIdProductosEnCarrito, fechaFormato, nombreGuardado);
+}
+
+boton_imprimir.addEventListener("click", confirmarVenta);

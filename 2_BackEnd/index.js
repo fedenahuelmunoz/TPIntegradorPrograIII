@@ -6,7 +6,7 @@ import express from "express"; // Importamos la libreria express de NodeJS
 import environments from "./src/api/config/environments.js"; // Traigo el puerto del .env
 import cors from "cors";
 import { loggerUrl } from "./src/api/middlewares/middlewares.js";
-import { authRoutes, productRoutes, viewRoutes } from "./src/api/routes/index.js";
+import { authRoutes, productRoutes, salesRoutes, viewRoutes } from "./src/api/routes/index.js";
 import { __dirname, join} from "./src/api/utils/index.js"
 import session from "express-session";
 
@@ -65,7 +65,10 @@ app.use("/api/products", productRoutes);
 app.use("/dashboard", viewRoutes);
 
 //Rutas de autenticacion
-app.use("/", authRoutes)
+app.use("/", authRoutes);
+
+//Rutas de ventas
+app.use("/api/sales", salesRoutes);
 
 // Ponemos en funcionamiento nuestro servidor express
 app.listen(PORT, () => {
