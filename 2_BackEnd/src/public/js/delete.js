@@ -69,7 +69,7 @@ function renderizarProducto(producto) {
                 <h4>Nombre: ${producto.name}</h4>
                 <h4>Precio: $${producto.price}</h4>
                 <h4>Estado: ${estado}</h4>
-                <button type="button" id="btn-eliminar">Eliminar producto</button> 
+                <button type="button" class="action-btn-dashboard" id="btn-eliminar">Eliminar producto</button> 
             </div>    
         </div>
     `;

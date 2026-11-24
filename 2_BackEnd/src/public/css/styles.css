@@ -10,7 +10,7 @@
 body{
     margin: 0;
     padding:0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 /*Estilos para los textos en general de la página*/
@@ -120,6 +120,20 @@ main{
 
     width: 100%;
     min-height: 100vh;
+}
+
+/*Estilos para los botones que aparecen en las distintas páginas del dashboard: para consultar producto, para crear producto, para eliminar producto y para modificar producto*/
+.action-btn-dashboard{
+    background-color: rgb(128, 29, 217);
+    color:antiquewhite;
+    border-radius: 1rem;
+    height: 1.5rem;
+    width: auto;
+}
+
+/*Estilos para los inputs de los distintos forms de la página*/
+.input-form {
+    border-radius: 0.5rem;
 }
 
 /*Estilos para el formulario donde se obtiene un producto por su id y para el formulario de crear un producto*/
@@ -258,7 +272,7 @@ footer img{
 /* ===========================================
    MEDIAS QUERY
    =========================================== */
-@media (max-width: 840px) { /*Pantalla de menos de 768px*/
+@media (max-width: 840px) { /*Pantalla de menos de 840px*/
     .back-office-header {
         height: auto;
         flex-direction: column; /*Pone el logo arriba y el nav abajo*/
@@ -283,5 +297,19 @@ footer img{
 @media (max-width: 730px) {
     .header-nav #btn-logout {
         padding-left: 0;
+    }
+}
+
+@media (max-width: 570px) {
+    footer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-nav ul{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }

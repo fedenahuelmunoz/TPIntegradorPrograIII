@@ -95,7 +95,7 @@ function renderizarProducto(producto) {
                 <h4>Precio: $${producto.price}</h4>
                 <h4>Estado: ${estado}</h4> 
             </div>
-            <button id="btn-modificar">Modificar</button>    
+            <button class="action-btn-dashboard" id="btn-modificar">Modificar</button>    
         </div>
     `;
     contenedorProductos.innerHTML = htmlProducto;
